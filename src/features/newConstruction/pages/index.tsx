@@ -103,7 +103,7 @@ export default function NewConstructionPage() {
                 <Typography>
                   Si, he leido y acepto las
                   <Typography
-                    variant='span'
+                    variant='caption'
                     sx={{
                       "&:hover" : {
                         textDecoration: 'underline',
@@ -113,9 +113,9 @@ export default function NewConstructionPage() {
                     }}
                   > condiciones de uso
                   </Typography>
-                  <Typography variant='span'> y la</Typography>
+                  <Typography variant='caption'> y la</Typography>
                   <Typography
-                    variant='span'
+                    variant='caption'
                     sx={{
                       "&:hover" : {
                         textDecoration: 'underline',

@@ -166,7 +166,7 @@ export default function RegisterHousingPage() {
                 <Typography>
                   He leido y acepto las
                   <Typography
-                    variant='span'
+                    variant='caption'
                     sx={{
                       "&:hover" : {
                         textDecoration: 'underline',

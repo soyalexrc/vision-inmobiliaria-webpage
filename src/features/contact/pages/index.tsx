@@ -159,7 +159,7 @@ export default function ContactPage() {
                 <Typography>
                   He leido y acepto las
                   <Typography
-                    variant='span'
+                    variant='caption'
                     sx={{
                       "&:hover" : {
                         textDecoration: 'underline',
