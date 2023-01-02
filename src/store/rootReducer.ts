@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 // slices
-import authReducer from "./slices/auth";
-import boardsReducer from "./slices/boards";
 
 
 // ----------------------------------------------------------------------
@@ -15,8 +13,6 @@ const rootPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  boards: boardsReducer,
 });
 
 export { rootPersistConfig, rootReducer };

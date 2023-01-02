@@ -38,7 +38,6 @@ import Container from './Container';
 import Accordion from './Accordion';
 import Typography from './Typography';
 import Pagination from './Pagination';
-import IconButton from './IconButton';
 import Breadcrumbs from './Breadcrumbs';
 import ButtonGroup from './ButtonGroup';
 import Autocomplete from './Autocomplete';
@@ -87,7 +86,6 @@ export default function ComponentsOverrides(theme: any) {
     Progress(theme),
     Container(theme),
     Accordion(theme),
-    IconButton(theme),
     Typography(theme),
     Pagination(theme),
     ButtonGroup(theme),

@@ -8,7 +8,7 @@ import {APP_BAR_DESKTOP, APP_BAR_MOBILE} from "@/shared/constants";
 
 // ----------------------------------------------------------------------
 
-interface props {
+interface PageProps {
   children: JSX.Element,
   title: string,
   description: string,
@@ -25,11 +25,11 @@ const RootStyle = styled(Box)(({theme}) => ({
   position: 'relative',
   paddingTop: APP_BAR_MOBILE / 1.8,
   [theme.breakpoints.up("md")]: {
-    paddingTop: APP_BAR_DESKTOP / 2,
+    paddingTop: APP_BAR_DESKTOP / 1.4,
   },
 }));
 
-const Page = forwardRef(({ children, title, description, sx }: props, ref: ForwardedRef<unknown>) => {
+const Page = forwardRef(({ children, title, description, sx }: PageProps, ref: ForwardedRef<unknown>) => {
 
   return (
     <RootStyle ref={ref} sx={sx}>

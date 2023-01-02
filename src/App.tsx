@@ -4,6 +4,7 @@ import ScrollToTop from "@/shared/components/ScrollToTop";
 import Router from "@/routes";
 import {SnackbarProvider} from 'notistack'
 
+
 function App() {
   return (
     <ThemeConfig>

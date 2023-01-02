@@ -13,6 +13,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest1,
     title: 'Piso con terraza en avenida de castilla',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '85',
     rooms: 3,
     bathrooms: 1,
@@ -21,6 +22,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest2,
     title: 'Piso de 4 dormitorios en la plaza de la provincia',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '180',
     rooms: 4,
     bathrooms: 2,
@@ -29,6 +31,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest3,
     title: 'Piso 3 dormitorios en zona constitucion',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '82',
     rooms: 3,
     bathrooms: 1,
@@ -37,6 +40,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest4,
     title: 'Piso 3 dormitorios a estrenar en zona los valles',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '189',
     rooms: 3,
     bathrooms: 2,
@@ -45,6 +49,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest5,
     title: 'Fantastico chalet adosado en aguas vivas',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '227',
     rooms: 3,
     bathrooms: 3,
@@ -53,6 +58,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest6,
     title: 'Gran piso en virgen del amparo',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '173',
     rooms: 4,
     bathrooms: 2,
@@ -61,6 +67,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest7,
     title: 'Duplex en zona chopera',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '82',
     rooms: 2,
     bathrooms: 2,
@@ -69,6 +76,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest8,
     title: 'Chalet adosado en el centro de guadalajara',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '226',
     rooms: 5,
     bathrooms: 2,
@@ -77,6 +85,7 @@ export const LATEST_ELEMENTS_DATA = [
   {
     img: latest9,
     title: 'Fantastico piso 4 dormitorios zona constitucion',
+    description: 'Viviendas y aticos de 1, 2 y 3 dormitorios en guadalajara',
     meters: '97',
     rooms: 4,
     bathrooms: 1,

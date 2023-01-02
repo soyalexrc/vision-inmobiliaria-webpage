@@ -13,8 +13,8 @@ export default function Footer() {
         <Container>
           <Box display='flex' p={1} justifyContent='flex-end'>
             {
-              SOCIAL_MEDIA_DATA.map(element => (
-                <Link style={{margin: '0 1rem'}} href={element.path} target="_blank" key={element.path}>
+              SOCIAL_MEDIA_DATA.map((element, index) => (
+                <Link href={element.path} target="_blank" key={element.path + index} style={{margin: '0 1rem'}}  >
                   {element.icon}
                 </Link>
               ))
@@ -23,7 +23,7 @@ export default function Footer() {
         </Container>
       </Box>
       <Container sx={{p: 2}}>
-        <Grid container spacing={10}>
+        <Grid container columnSpacing={10}>
           <Grid item xs={12} md={6}>
             <Box component='img' src={Logo} width={150}/>
             <Typography variant='caption'>
@@ -54,7 +54,7 @@ export default function Footer() {
           <Grid item xs={12} md={3}>
             <Typography variant='h6'>Menu</Typography>
             {NAVBAR_ITEMS.map(element => (
-              <Box>
+              <Box key={element.path}>
                 <RouterLink  to={element.path}>
                   {element.label}
                 </RouterLink>

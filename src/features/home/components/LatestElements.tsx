@@ -11,6 +11,7 @@ export default function LatestElements() {
           {
             LATEST_ELEMENTS_DATA.map(element => (
               <Grid
+                key={element.title}
                 item
                 xs={12}
                 md={4}
