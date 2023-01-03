@@ -63,8 +63,8 @@ const NotFoundComponent = Loadable(lazy(() => import('../shared/components/NotFo
 
 // home
 const HomePage = Loadable(lazy(() => import('../features/home/pages/HomePage')));
-const SellPage = Loadable(lazy(() => import('../features/sell/pages/List')));
-const RentPage = Loadable(lazy(() => import('../features/rent/pages/List')));
+const SellPage = Loadable(lazy(() => import('../features/sell/pages/SellListPage')));
+const RentPage = Loadable(lazy(() => import('../features/rent/pages/RentListPage')));
 const NewConstructionPage = Loadable(lazy(() => import('../features/newConstruction/pages')));
 const RegisterHousingPage = Loadable(lazy(() => import('../features/registerHousing/pages')));
 const AboutPage = Loadable(lazy(() => import('../features/about/pages')));

@@ -7,7 +7,7 @@ import {
   Grid,
   Typography,
   Checkbox,
-  TextField,
+  TextField, useMediaQuery,
 } from "@mui/material";
 import {LATEST_ELEMENTS_DATA} from '@/shared/utils/mock/latestElements'
 
@@ -62,13 +62,14 @@ function BannerComponent({item}: any) {
 }
 
 export default function NewConstructionPage() {
+  const largeScreen = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
 
   return (
     <Page title='Contacto | Vision Inmobiliaria' description='Seccion de contacto'>
       <>
         <BannerComponent item={mainData[0]}/>
         <Container>
-          <Grid container columnSpacing={5} rowSpacing={2} sx={{my: 3}}>
+          <Grid container columnSpacing={5} rowSpacing={2} sx={{my: 3}} direction={largeScreen ? 'row' : 'column-reverse'}>
             <Grid item xs={12} md={3}>
               <Box sx={{mb: 3}}>
                 <Typography align='center' variant='h3'>Contacto directo</Typography>
@@ -128,15 +129,15 @@ export default function NewConstructionPage() {
                 </Typography>
               </Box>
             </Grid>
-            <Grid container spacing={2} item xs={12} md={9}>
+            <Grid item container spacing={2} xs={12} md={9}>
               {
                 LATEST_ELEMENTS_DATA.map(element => (
-                  <Grid item xs={12} sm={6} md={4}>
+                  <Grid item xs={12} sm={6} >
                     <Box
                       component='img'
                       src={element.img}
                       width='100%'
-                      sx={{ objectFit: 'cover', minHeight: '205px' }}
+                      sx={{ objectFit: 'cover', minHeight: '314px' }}
                     />
                     <Box
                       sx={{
