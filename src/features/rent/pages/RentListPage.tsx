@@ -79,18 +79,26 @@ const numberOfGarages = [
 ]
 
 
-function CustomField({options, sx, title}: any) {
+function CustomField({options, title, value, onChange, disabled = false, sx}: any) {
   return (
-    <Box sx={sx}>
-      {title && <Typography variant='h6' sx={{mb: 1}}>{title}</Typography>}
+    <>
+      <Typography variant='h6' sx={{mb: 2}}>{title}</Typography>
       <Autocomplete
+        sx={sx}
         size='small'
         disablePortal
-        id="custom-combo-box"
+        value={value}
+        onChange={onChange}
         options={options}
-        renderInput={(params) => <TextField {...params} />}
+        disabled={disabled}
+        getOptionLabel={(option) => option.label || ''}
+        isOptionEqualToValue={(option, value) => option.label === value.label}
+        renderOption={(props, option) => (
+          <li key={option.id} {...props}>{option.label}</li>
+        )}
+        renderInput={(params) => <TextField {...params} label="Seleccionar"/>}
       />
-    </Box>
+    </>
   )
 }
 
@@ -165,12 +173,12 @@ function ProductComponent({product, view}: any) {
           }}
         >
           <Typography variant='h6' sx={{mb: 2}} align='center'>{product.title}</Typography>
-          <Box >
+          <Box>
             <Box display='flex' alignItems='center' justifyContent='center' mt={3}>
               <Typography>{product.meters} m2</Typography>
-              <Divider  sx={{ mx: 2, borderWidth: '1px' }} orientation='vertical' flexItem />
+              <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
               <Typography>{product.rooms} Habitaciones</Typography>
-              <Divider sx={{ mx: 2, borderWidth: '1px' }}  orientation='vertical' flexItem />
+              <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
               <Typography>{product.bathrooms} Banos</Typography>
             </Box>
 
@@ -198,28 +206,86 @@ function ProductComponent({product, view}: any) {
           }}
         >
           <Typography variant='h6' sx={{mb: 2}} align='center'>{product.title}</Typography>
-          <Box >
+          <Box>
             <Box display='flex' alignItems='center' justifyContent='center' mt={3}>
               <Typography>{product.meters} m2</Typography>
-              <Divider  sx={{ mx: 2, borderWidth: '1px' }} orientation='vertical' flexItem />
+              <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
               <Typography>{product.rooms} Habitaciones</Typography>
-              <Divider sx={{ mx: 2, borderWidth: '1px' }}  orientation='vertical' flexItem />
+              <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
               <Typography>{product.bathrooms} Banos</Typography>
             </Box>
 
             <Typography color='primary' variant='h3' align='center'>{product.price} €</Typography>
-            <Typography sx={{ px: 3 }} fontSize='13px'>{product.fullDescription}</Typography>
+            <Typography sx={{px: 3}} fontSize='13px'>{product.fullDescription}</Typography>
           </Box>
         </Box>
       </Box>
     )
   }
 
+  return <></>
+
 }
 
 export default function RentListPage() {
   const largeScreen = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
   const [viewType, setViewType] = React.useState('grid');
+
+  const [filters, setFilters] = React.useState({
+    operation: {label: 'Comprar'},
+    typeOfAsset: {label: ''},
+    state: {label: ''},
+    zone: {label: ''},
+    priceFrom: '',
+    priceTo: '',
+    reference: '',
+    moreOptions: []
+  });
+
+  function handleChange(key: any, value: any) {
+    setFilters(prevState => ({
+      ...prevState,
+      [key]: value
+    }))
+
+    if (key === 'operation' && value.label && value.label === 'Traspaso de fondo') {
+      setFilters(prevState => ({
+        ...prevState,
+        typeOfAsset: {label: 'Local'}
+      }))
+    }
+    if (key === 'state') {
+      setFilters(prevState => ({
+        ...prevState,
+        zone: {label: ''}
+      }))
+    }
+
+
+  }
+
+  function getZonesByState() {
+    if (filters.state?.label === 'Carabobo') {
+      return [
+        {label: 'Valencia'},
+        {label: 'Naguangua'},
+        {label: 'San Diego'},
+        {label: 'Guacara'},
+        {label: 'Los Guayos'},
+        {label: 'El Libertador'},
+      ]
+    } else if (filters.state?.label === 'Cojedes') {
+      return [
+        {label: 'Ezequiel Zamora'},
+      ]
+    } else if (filters.state?.label === 'Falcón') {
+      return [
+        {label: 'José Laurencio Silva '},
+      ]
+    } else {
+      return [{label: ''}]
+    }
+  }
 
   return (
     <Page title='Contacto | Vision Inmobiliaria' description='Seccion de contacto'>
@@ -231,33 +297,65 @@ export default function RentListPage() {
             <Grid item xs={12} md={4}>
               <Button size='small'><ArrowLeftIcon/>Volver</Button>
               <CustomField
-                title='Provincia'
-                options={province}
-                sx={{mb: 3}}
+                options={[
+                  {label: ''},
+                  {label: 'Carabobo'},
+                  {label: 'Cojedes'},
+                  {label: 'Falcón'},
+                ]}
+                title='Estado'
+                value={filters.state}
+                sx={{mb: 2}}
+                onChange={(_: any, newValue: any) => handleChange('state', newValue)}
               />
               <CustomField
-                title='Poblacion'
-                options={poblation}
-                sx={{mb: 3}}
+                options={getZonesByState()}
+                title='Municipio'
+                sx={{mb: 2}}
+                value={filters.zone}
+                onChange={(_: any, newValue: any) => handleChange('zone', newValue)}
               />
-              <CustomField
-                title='Zona'
-                options={poblation}
-                sx={{mb: 3}}
-              />
+
               <Box mb={3}>
                 <Typography variant='h6' sx={{mb: 1}}>Precio</Typography>
                 <Box display='flex' alignItems='center'>
-                  <TextField fullWidth size='small' placeholder='Desde'/>
+                  <TextField
+                    size='small'
+                    fullWidth
+                    label="Desde"
+                    variant="outlined"
+                    value={filters.priceFrom}
+                    onChange={(event) => handleChange('priceFrom', event.target.value)}
+                  />
                   <Box mx={2}>-</Box>
-                  <TextField fullWidth size='small' placeholder='Hasta'/>
+                  <TextField
+                    size='small'
+                    fullWidth
+                    label="Hasta"
+                    variant="outlined"
+                    value={filters.priceTo}
+                    onChange={(event) => handleChange('priceTo', event.target.value)}
+                  />
                 </Box>
               </Box>
 
               <CustomField
-                title='Tipo'
-                options={housingType}
-                sx={{mb: 3}}
+                options={[
+                  {label: ''},
+                  {label: 'Casa'},
+                  {label: 'Townhouse'},
+                  {label: 'Apartamento'},
+                  {label: 'Local'},
+                  {label: 'Oficina'},
+                  {label: 'Galpón'},
+                  {label: 'Terreno'},
+                  {label: 'Finca'},
+                ]}
+                sx={{mb: 2}}
+                title='Inmueble'
+                value={filters.typeOfAsset}
+                disabled={filters.operation?.label === 'Traspaso de fondo'}
+                onChange={(_: any, newValue: any) => handleChange('typeOfAsset', newValue)}
               />
               <CustomField
                 title='Numero de dormitorios'
@@ -293,8 +391,10 @@ export default function RentListPage() {
               </Box>
 
               <Box mb={3}>
-                <Typography variant='h6' sx={{mb: 1}}>Buscar por referencia</Typography>
-                <TextField fullWidth size='small' placeholder='Ref.'/>
+                <Typography variant='h6' sx={{mb: 1}}>Buscar por Codigo</Typography>
+                <TextField value={filters.reference} onChange={(event) => handleChange('reference', event.target.value)}
+                           fullWidth size='small' label='Palabra clave / Codigo' variant="outlined"/>
+
               </Box>
 
               <Button size='small' fullWidth variant='contained'>Buscar</Button>
@@ -315,13 +415,13 @@ export default function RentListPage() {
               <Grid item xs={6} sx={{display: 'flex', justifyContent: 'flex-end'}}>
                 <Box display='flex'>
                   <IconButton onClick={() => setViewType('grid')}>
-                    <AppsIcon color={viewType === 'grid' ? 'primary' : ''}/>
+                    <AppsIcon color={viewType === 'grid' ? 'primary' : 'action'}/>
                   </IconButton>
                   <IconButton onClick={() => setViewType('list')}>
-                    <FormatListBulletedIcon color={viewType === 'list' ? 'primary' : ''}/>
+                    <FormatListBulletedIcon color={viewType === 'list' ? 'primary' : 'action'}/>
                   </IconButton>
                   <IconButton onClick={() => setViewType('map')}>
-                    <LocationOnIcon color={viewType === 'map' ? 'primary' : ''}/>
+                    <LocationOnIcon color={viewType === 'map' ? 'primary' : 'action'}/>
                   </IconButton>
                 </Box>
               </Grid>
@@ -338,7 +438,7 @@ export default function RentListPage() {
               }
               {
                 viewType === 'map' &&
-                <Box mt={6} component='img' src={map} height='750px' sx={{ objectFit: 'cover' }} />
+                <Box mt={6} component='img' src={map} height='750px' sx={{objectFit: 'cover'}}/>
               }
               <Grid item xs={12} sx={{display: 'flex', justifyContent: 'flex-end'}}>
                 <Pagination sx={{my: 5}} count={10} variant="outlined" shape="rounded"/>

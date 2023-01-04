@@ -15,7 +15,7 @@ export default function Footer() {
             {
               SOCIAL_MEDIA_DATA.map((element, index) => (
                 <Link href={element.path} target="_blank" key={element.path + index} style={{margin: '0 1rem'}}  >
-                  {element.icon}
+                  <Box component='img' src={element.icon} width={25} height={25}/>
                 </Link>
               ))
             }

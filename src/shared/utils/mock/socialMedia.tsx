@@ -1,14 +1,12 @@
-import InstagramIcon from '@mui/icons-material/Instagram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import ws from '@/assets/icons/whatsapp-icon.png';
+import fb from '@/assets/icons/facebook-icon.webp';
+import tk from '@/assets/icons/tiktok-icon.png';
+import ig from '@/assets/icons/Instagram-Icon.png';
 
 export const SOCIAL_MEDIA_DATA = [
-  {icon: <InstagramIcon/>, path: 'https://instagram.com'},
-  {icon: <LinkedInIcon/>, path: 'https://linkedin.com'},
-  {icon: <FacebookIcon/>, path: 'https://facebook.com'},
-  {icon: <TwitterIcon/>, path: 'https://twitter.com'},
-  {icon: <YouTubeIcon/>, path: 'https://youtube.com'},
+  {icon: ig, path: 'https://instagram.com'},
+  {icon: fb, path: 'https://facebook.com'},
+  {icon: tk, path: 'https://tiktok.com'},
+  {icon: ws, path: 'https://whatsapp.com'},
 ]
 

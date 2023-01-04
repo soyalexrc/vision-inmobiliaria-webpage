@@ -7,21 +7,36 @@ export const LIFESTYLE_BANNER_DATA = [
   {
     img: banner1,
     path: '/venta',
-    label: 'Obra nueva'
+    label: 'Vivienda'
   },
   {
     img: banner2,
     path: '/venta',
-    label: 'Pisos con terraza'
+    label: 'Local'
   },
   {
     img: banner3,
     path: '/venta',
-    label: 'Pisos en el centro'
+    label: 'Estadias Vacacionales'
   },
   {
     img: banner4,
     path: '/venta',
-    label: 'Chalets'
+    label: 'Oficina'
+  },
+  {
+    img: banner1,
+    path: '/venta',
+    label: 'Galpón'
+  },
+  {
+    img: banner2,
+    path: '/venta',
+    label: 'Finca'
+  },
+  {
+    img: banner4,
+    path: '/venta',
+    label: 'Terreno'
   },
 ]
