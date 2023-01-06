@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, IconButton, Toolbar} from "@mui/material";
+import {Box, IconButton, Toolbar, Menu, MenuItem} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {styled} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
@@ -62,6 +62,20 @@ const MenuElement = styled(Link)(({theme}) => ({
   }
 }))
 
+const ChildElement = styled(Link)(({theme}) => ({
+  color: 'black',
+  height: '100%',
+  padding: '.5rem 1rem',
+  transition: 'background 200ms ease, color 200ms ease',
+  cursor: 'pointer',
+  textDecoration: 'none',
+  display: 'block',
+  "&:hover": {
+    backgroundColor: '#f6f6f6',
+    color: 'red',
+  }
+}))
+
 interface NavparProps {
   open: boolean,
   largeScreen: boolean,
@@ -71,6 +85,50 @@ interface NavparProps {
 export default function Navbar({open, largeScreen, handleDrawerChange}: NavparProps) {
   const location = useLocation();
   const isOffset = useOffSetTop(1);
+  const [servicesEl, setServicesEL] = React.useState(null);
+  const [aboutUsEl, setAboutUsEl] = React.useState(null);
+  const [contactEl, setContactEl] = React.useState(null);
+  const [rentEl, setRentEl] = React.useState(null);
+
+  function handleClickServices(event: any) {
+    if (servicesEl !== event.currentTarget) {
+      setServicesEL(event.currentTarget);
+    }
+  }
+
+  function handleClickAboutUs(event: any) {
+    if (aboutUsEl !== event.currentTarget) {
+      setAboutUsEl(event.currentTarget);
+    }
+  }
+
+  function handleClickContact(event: any) {
+    if (contactEl !== event.currentTarget) {
+      setContactEl(event.currentTarget);
+    }
+  }
+
+  function handleClickRent(event: any) {
+    if (rentEl !== event.currentTarget) {
+      setRentEl(event.currentTarget);
+    }
+  }
+
+  function handleCloseServices() {
+    setServicesEL(null);
+  }
+
+  function handleCloseAboutUs() {
+    setAboutUsEl(null);
+  }
+
+  function handleCloseRent() {
+    setRentEl(null);
+  }
+
+  function handleCloseContact() {
+    setContactEl(null)
+  }
 
   return (
     <Box component='nav' sx={{position: 'relative'}}>
@@ -89,7 +147,7 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
         >
           <Box display='flex' height='100%' alignItems='center' justifyContent='space-between' px={largeScreen ? 5 : 2}>
             <Link to='/'>
-              <Box component='img' sx={{ cursor: 'pointer' }} src={Logo} width={100} alt=""/>
+              <Box component='img' sx={{cursor: 'pointer'}} src={Logo} width={100} alt=""/>
             </Link>
             {
               !largeScreen &&
@@ -106,22 +164,135 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
             {
               largeScreen &&
               <Box display='flex' height='100%'>
-                {
-                  NAVBAR_ITEMS.map(element => (
-                    <MenuElement
-                      sx={{
-                        ...(location.pathname === element.path && {
-                          color: 'red',
-                          borderBottomColor: 'red'
-                        })
+                <MenuElement
+                  sx={{
+                    ...(location.pathname === '/' && {
+                      color: 'red',
+                      borderBottomColor: 'red'
+                    })
+                  }}
+                  to='/'>
+                  <p>Inicio</p>
+                </MenuElement>
+                <MenuElement
+                  sx={{
+                    ...(location.pathname === '/venta' && {
+                      color: 'red',
+                      borderBottomColor: 'red'
+                    })
+                  }}
+                  to='/venta'>
+                  <p>Venta</p>
+                </MenuElement>
 
-                      }}
-                      to={element.path}
-                      key={element.value}>
-                      <p>{element.label}</p>
-                    </MenuElement>
-                  ))
-                }
+                <MenuElement
+                  id='rent-actioner'
+                  sx={{
+                    ...(location.pathname === '/alquiler' && {
+                      color: 'red',
+                      borderBottomColor: 'red'
+                    })
+                  }}
+                  aria-owns={rentEl ? 'rent-id' : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClickRent}
+                  onMouseOver={handleClickRent}
+                  to={'#'}
+                >
+                  <p>Alquiler</p>
+                </MenuElement>
+                <Menu
+                  id='rent-id'
+                  anchorEl={rentEl}
+                  open={Boolean(rentEl)}
+                  onClose={handleCloseRent}
+                  MenuListProps={{ onMouseLeave: handleCloseRent }}
+                >
+                  <ChildElement onClick={handleCloseRent} to='/alquiler#estadias-vacacionales' >Estadias vacacionales</ChildElement>
+                  <ChildElement onClick={handleCloseRent} to='/alquiler#temporadas-largas' >Temporadas largas</ChildElement>
+                </Menu>
+                <MenuElement
+                  id='services-actioner'
+                  sx={{
+                    ...(location.pathname === '/servicios' && {
+                      color: 'red',
+                      borderBottomColor: 'red'
+                    })
+                  }}
+                  aria-owns={servicesEl ? 'services-id' : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClickServices}
+                  onMouseOver={handleClickServices}
+                  to={'#'}                          >
+                  <p>Servicios</p>
+                </MenuElement>
+                <Menu
+                  id='services-id'
+                  anchorEl={servicesEl}
+                  open={Boolean(servicesEl)}
+                  onClose={handleCloseServices}
+                  MenuListProps={{ onMouseLeave: handleCloseServices }}
+                >
+                  <ChildElement onClick={handleCloseServices} to='/servicios#inmobiliario' >Inmobiliario</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#administracion-de-inmuebles-alquilados' >Administración de inmuebles alquilados</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#tramites-legales' >Trámites legales</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#gestion-contable' >Gestión contable</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#ama-de-llaves' >Ama de llaves</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#remodelacion' >Remodelación</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#mantenimiento-de-inmuebles' >Mantenimiento de inmuebles</ChildElement>
+                </Menu>
+
+                <MenuElement
+                  id='aboutUs-actioner'
+                  sx={{
+                    ...(location.pathname === '/acerca-de-nosotros' && {
+                      color: 'red',
+                      borderBottomColor: 'red'
+                    })
+                  }}
+                  aria-owns={aboutUsEl ? 'aboutUs-id' : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClickAboutUs}
+                  onMouseOver={handleClickAboutUs}
+                  to={'#'}                          >
+                  <p>Acerca de Vision</p>
+                </MenuElement>
+                <Menu
+                  id='aboutUs-id'
+                  anchorEl={aboutUsEl}
+                  open={Boolean(aboutUsEl)}
+                  onClose={handleCloseAboutUs}
+                  MenuListProps={{ onMouseLeave: handleCloseAboutUs }}
+                >
+                  <ChildElement onClick={handleCloseAboutUs} to='/acerca-de-nosotros' >Acerca de nosotros</ChildElement>
+                  <ChildElement onClick={handleCloseAboutUs} to='/acerca-de-nosotros#equipo-de-trabajo' >Equipo de trabajo</ChildElement>
+                </Menu>
+
+                <MenuElement
+                  id='contact-actioner'
+                  sx={{
+                    ...(location.pathname === '/contacto' && {
+                      color: 'red',
+                      borderBottomColor: 'red'
+                    })
+                  }}
+                  aria-owns={contactEl ? 'contact-id' : undefined}
+                  aria-haspopup="true"
+                  onClick={handleClickContact}
+                  onMouseOver={handleClickContact}
+                  to={'#'}                          >
+                  <p>Contacto</p>
+                </MenuElement>
+                <Menu
+                  id='contact-id'
+                  anchorEl={contactEl}
+                  open={Boolean(contactEl)}
+                  onClose={handleCloseContact}
+                  MenuListProps={{ onMouseLeave: handleCloseContact }}
+                >
+                  <ChildElement onClick={handleCloseContact} to='/contacto' >Contacto</ChildElement>
+                  <ChildElement onClick={handleCloseContact} to='/contacto/trabaja-con-nosotros' >Envia tu curriculum</ChildElement>
+                </Menu>
               </Box>
             }
           </Box>

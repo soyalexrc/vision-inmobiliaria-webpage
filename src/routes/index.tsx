@@ -49,8 +49,9 @@ export default function Router() {
         {path: '', element: <HomePage/>},
         {path: 'venta', element: <SellPage/>},
         {path: 'alquiler', element: <RentPage/>},
-        {path: 'obra-nueva', element: <NewConstructionPage/>},
-        {path: 'registra-tu-vivienda', element: <RegisterHousingPage/>},
+        {path: 'servicios', element: <ServicesPage/>},
+        // {path: 'obra-nueva', element: <NewConstructionPage/>},
+        // {path: 'registra-tu-vivienda', element: <RegisterHousingPage/>},
         {path: 'acerca-de-nosotros', element: <AboutPage/>},
         {path: 'contacto', element: <ContactPage/>},
       ]
@@ -65,8 +66,9 @@ const NotFoundComponent = Loadable(lazy(() => import('../shared/components/NotFo
 const HomePage = Loadable(lazy(() => import('../features/home/pages/HomePage')));
 const SellPage = Loadable(lazy(() => import('../features/sell/pages/SellListPage')));
 const RentPage = Loadable(lazy(() => import('../features/rent/pages/RentListPage')));
-const NewConstructionPage = Loadable(lazy(() => import('../features/newConstruction/pages')));
-const RegisterHousingPage = Loadable(lazy(() => import('../features/registerHousing/pages')));
-const AboutPage = Loadable(lazy(() => import('../features/about/pages')));
+const ServicesPage = Loadable(lazy(() => import('../features/services/pages/ServicesPage')));
+// const NewConstructionPage = Loadable(lazy(() => import('../features/newConstruction/pages')));
+// const RegisterHousingPage = Loadable(lazy(() => import('../features/registerHousing/pages')));
+const AboutPage = Loadable(lazy(() => import('../features/about/pages/AboutPage')));
 const ContactPage = Loadable(lazy(() => import('../features/contact/pages')));
 

@@ -19,6 +19,7 @@ import {
   Button,
   Divider
 } from "@mui/material";
+import {useLocation} from "react-router-dom";
 
 const mainData = [
   {
@@ -31,6 +32,7 @@ const mainData = [
 const offices = [office1, office2, office3, office4, office5, office6]
 
 function BannerComponent({item}: any) {
+
 
   return (
     <Box
@@ -69,6 +71,21 @@ function BannerComponent({item}: any) {
 }
 
 export default function AboutPage() {
+  const location = useLocation();
+
+  React.useEffect(() => {
+
+    if (location.hash) {
+
+      const el: any = document.getElementById('equipo-de-trabajo');
+      el.scrollIntoView()
+
+    } else {
+      window.scrollTo(0, 0);
+    }
+
+    console.log(location)
+  }, [location])
 
   return (
     <Page title='Acerca de nosotros | Vision Inmobiliaria' description='Seccion de contacto'>
@@ -123,8 +140,9 @@ export default function AboutPage() {
               transform: 'translate(-50%, -50%)',
             }}
           >
-            <Typography align='center' sx={{ mb: 3, letterSpacing: '3px' }} variant='h2'>Tu hogar te espera aqui</Typography>
-            <Typography >
+            <Typography align='center' sx={{mb: 3, letterSpacing: '3px'}} variant='h2'>Tu hogar te espera
+              aqui</Typography>
+            <Typography>
               Únicamente al lugar donde vivimos, en el que sentimos seguridad y calma, podemos llamar hogar. En Induo
               sabemos que no siempre es fácil encontrar ese sueño en forma de casa, que tan importante es para cualquier
               persona. Por ello dedicamos todos nuestros esfuerzos en hacer realidad esta ilusión, un hogar hecho a tu
@@ -135,11 +153,11 @@ export default function AboutPage() {
             </Box>
           </Box>
         </Box>
-        <Container sx={{ my: 2 }}>
+        <Container sx={{my: 2}} id='equipo-de-trabajo'>
           <Grid container spacing={2}>
             {offices.map(office => (
               <Grid item xs={12} sm={6} md={4}>
-                <Box component='img' src={office} />
+                <Box component='img' src={office}/>
               </Grid>
             ))}
           </Grid>
