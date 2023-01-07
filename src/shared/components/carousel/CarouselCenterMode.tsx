@@ -112,7 +112,7 @@ export default function CarouselCenterMode({data}: any) {
       },
       {
         breakpoint: 480,
-        settings: {slidesToShow: 1.35, centerPadding: "0"},
+        settings: {slidesToShow: 1, centerPadding: "0"},
       },
     ],
     ...CarouselControlsPagingBelow({sx: {mt: 3}}),

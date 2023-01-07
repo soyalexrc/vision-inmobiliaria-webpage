@@ -55,7 +55,7 @@ export default function Footer() {
             <Typography variant='h6'>Menu</Typography>
             {NAVBAR_ITEMS.map(element => (
               <Box key={element.path}>
-                <RouterLink  to={element.path}>
+                <RouterLink to='#'>
                   {element.label}
                 </RouterLink>
               </Box>

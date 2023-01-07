@@ -78,8 +78,7 @@ export default function AboutPage() {
     if (location.hash) {
 
       const el: any = document.getElementById('equipo-de-trabajo');
-      el.scrollIntoView()
-
+      el.scrollIntoView({behavior: 'smooth'})
     } else {
       window.scrollTo(0, 0);
     }

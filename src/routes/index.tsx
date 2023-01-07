@@ -54,6 +54,7 @@ export default function Router() {
         // {path: 'registra-tu-vivienda', element: <RegisterHousingPage/>},
         {path: 'acerca-de-nosotros', element: <AboutPage/>},
         {path: 'contacto', element: <ContactPage/>},
+        {path: 'contacto/trabaja-con-nosotros', element: <WorkWithUsPage/>},
       ]
     },
   ])
@@ -71,4 +72,5 @@ const ServicesPage = Loadable(lazy(() => import('../features/services/pages/Serv
 // const RegisterHousingPage = Loadable(lazy(() => import('../features/registerHousing/pages')));
 const AboutPage = Loadable(lazy(() => import('../features/about/pages/AboutPage')));
 const ContactPage = Loadable(lazy(() => import('../features/contact/pages')));
+const WorkWithUsPage = Loadable(lazy(() => import('../features/contact/pages/WorkWithUsPage')));
 

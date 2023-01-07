@@ -195,7 +195,6 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   }}
                   aria-owns={rentEl ? 'rent-id' : undefined}
                   aria-haspopup="true"
-                  onClick={handleClickRent}
                   onMouseOver={handleClickRent}
                   to={'#'}
                 >
@@ -221,7 +220,6 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   }}
                   aria-owns={servicesEl ? 'services-id' : undefined}
                   aria-haspopup="true"
-                  onClick={handleClickServices}
                   onMouseOver={handleClickServices}
                   to={'#'}                          >
                   <p>Servicios</p>
@@ -252,7 +250,6 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   }}
                   aria-owns={aboutUsEl ? 'aboutUs-id' : undefined}
                   aria-haspopup="true"
-                  onClick={handleClickAboutUs}
                   onMouseOver={handleClickAboutUs}
                   to={'#'}                          >
                   <p>Acerca de Vision</p>
@@ -278,7 +275,6 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   }}
                   aria-owns={contactEl ? 'contact-id' : undefined}
                   aria-haspopup="true"
-                  onClick={handleClickContact}
                   onMouseOver={handleClickContact}
                   to={'#'}                          >
                   <p>Contacto</p>
