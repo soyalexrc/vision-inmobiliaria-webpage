@@ -41,7 +41,7 @@ export default function HomePage() {
         <LifestyleBanner />
         <ContactBanner />
         <LatestElements />
-        <CarouselBasic3 items={data} type='banner' showArrows={true} />
+        {/*<CarouselBasic3 items={data} type='banner' showArrows={true} />*/}
         <OurServices />
         <BlogPreview />
       </div>

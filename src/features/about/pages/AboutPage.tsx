@@ -20,6 +20,9 @@ import {
   Divider
 } from "@mui/material";
 import {useLocation} from "react-router-dom";
+import CommentsCarousel from "@/shared/components/carousel/CommentsCarousel";
+import CarouselCenterMode from "../../../shared/components/carousel/CarouselCenterMode";
+import {LIFESTYLE_BANNER_DATA} from "@/shared/utils/mock/LifestyleBanner";
 
 const mainData = [
   {
@@ -160,6 +163,12 @@ export default function AboutPage() {
               </Grid>
             ))}
           </Grid>
+        </Container>
+        <Container sx={{ my: 4 }}>
+          <Typography variant='h2' align='center' sx={{ my: 2 }}>Lo que nuestros clientes dicen de nosotros</Typography>
+          <CommentsCarousel
+            data={LIFESTYLE_BANNER_DATA}
+          />
         </Container>
       </>
     </Page>

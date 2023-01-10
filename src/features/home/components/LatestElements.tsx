@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Container, Divider, Grid, Typography} from "@mui/material";
+import {Box, Button, Container, Divider, Grid, Typography} from "@mui/material";
 import {LATEST_ELEMENTS_DATA} from "@/shared/utils/mock/latestElements";
 
 export default function LatestElements() {
@@ -43,6 +43,9 @@ export default function LatestElements() {
           }
 
         </Grid>
+        <Box display='flex' my={5} justifyContent='center'>
+          <Button variant='contained'>Ver mas</Button>
+        </Box>
       </Container>
     </Box>
   )
