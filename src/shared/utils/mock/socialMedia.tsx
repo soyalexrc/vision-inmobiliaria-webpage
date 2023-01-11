@@ -1,12 +1,12 @@
-import ws from '@/assets/icons/whatsapp-icon.png';
-import fb from '@/assets/icons/facebook-icon.webp';
-import tk from '@/assets/icons/tiktok-icon.png';
-import ig from '@/assets/icons/Instagram-Icon.png';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import EmailIcon from '@mui/icons-material/Email';
 
 export const SOCIAL_MEDIA_DATA = [
-  {icon: ig, path: 'https://instagram.com'},
-  {icon: fb, path: 'https://facebook.com'},
-  {icon: tk, path: 'https://tiktok.com'},
-  {icon: ws, path: 'https://whatsapp.com'},
+  {icon: <InstagramIcon />, path: 'https://www.instagram.com/somosvisioninmobiliaria/'},
+  {icon: <FacebookIcon />, path: 'https://www.facebook.com/Somosvisioninmobiliaria/'},
+  {icon: <WhatsAppIcon />, path: 'https://wa.me/584244095149'},
+  {icon: <EmailIcon />, path: 'mailto:ventas@visioninmobiliaria.com.ve'},
 ]
 

@@ -10,7 +10,7 @@ import Footer from "@/shared/layouts/components/Footer";
 
 
 export default function UserLayout() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const largeScreen = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
 
 

@@ -31,11 +31,14 @@ const mainData = [
 ]
 
 const sampleOptions = [
-  {title: 'option 1'},
-  {title: 'option 2'},
-  {title: 'option 3'},
-  {title: 'option 4'},
-  {title: 'option 5'},
+  {title: 'Con piscina'},
+  {title: 'Con pozo de agua'},
+  {title: 'Con planta eléctrica'},
+  {title: 'Inmueble piso bajo'},
+  {title: 'Inmueble piso intermedio'},
+  {title: 'Inmueble piso alto'},
+  {title: 'Amoblado'},
+  {title: 'Sin amoblar'},
 ]
 
 const housingType = [
@@ -279,7 +282,7 @@ export default function SellListPage() {
       ]
     } else if (filters.state?.label === 'Cojedes') {
       return [
-        {label: 'Ezequiel Zamora'},
+        {label: 'San Carlos'},
       ]
     } else if (filters.state?.label === 'Falcón') {
       return [

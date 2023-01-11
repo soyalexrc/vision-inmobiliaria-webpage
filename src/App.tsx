@@ -15,6 +15,7 @@ function App() {
   React.useEffect(() => {
     const tawk = new TawkTo(propertyId, tawkId)
 
+
     tawk.onStatusChange((status: any) =>
     {
       console.log('status', status)

@@ -9,7 +9,6 @@ import {
   Checkbox,
   TextField, useMediaQuery, Paper,
 } from "@mui/material";
-import {LATEST_ELEMENTS_DATA} from '@/shared/utils/mock/latestElements'
 import sampleImg from '@/assets/images/latestElements/latest-1.jpg'
 import {useLocation} from "react-router-dom";
 
@@ -157,11 +156,11 @@ export default function ServicesPage() {
               {
                 [
                   {label: 'Servicios inmobiliarios', id: 'inmobiliario'},
-                  {label: 'Administracion de inmuebles alquilados', id: 'administracion-de-inmuebles-alquilados'},
-                  {label: 'Tramites legales', id: 'tramites-legales'},
-                  {label: 'Gestion contable', id: 'gestion-contable'},
+                  {label: 'Administración de inmuebles alquilados', id: 'administracion-de-inmuebles-alquilados'},
+                  {label: 'Trámites legales', id: 'tramites-legales'},
+                  {label: 'Gestión contable', id: 'gestion-contable'},
                   {label: 'Ama de llaves', id: 'ama-de-llaves'},
-                  {label: 'Remodelacion', id: 'remodelacion'},
+                  {label: 'Remodelación', id: 'remodelacion'},
                   {label: 'Mantenimiento de inmuebles', id: 'mantenimiento-de-inmuebles'},
                 ].map((element, index) => (
                   <Paper elevation={2} sx={{display: 'flex', my: 5, position: 'relative', flexDirection: largeScreen ? 'row' : 'column'}} id={element.id}>

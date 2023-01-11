@@ -10,15 +10,15 @@ export const SERVICES_DATA = [
   },
   {
     img: services2,
-    title: 'Administracion de inmuebles alquilados',
+    title: 'Administración de inmuebles alquilados',
   },
   {
     img: services3,
-    title: 'Tramites legales',
+    title: 'Trámites legales',
   },
   {
     img: services4,
-    title: 'Gestion contable',
+    title: 'Gestión contable',
   },
   {
     img: services4,
@@ -26,7 +26,7 @@ export const SERVICES_DATA = [
   },
   {
     img: services4,
-    title: 'Remodelacion'
+    title: 'Remodelación'
   },
   {
     img: services4,

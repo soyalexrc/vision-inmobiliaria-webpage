@@ -276,7 +276,7 @@ export default function RentListPage() {
       ]
     } else if (filters.state?.label === 'Cojedes') {
       return [
-        {label: 'Ezequiel Zamora'},
+        {label: 'San Carlos'},
       ]
     } else if (filters.state?.label === 'Falcón') {
       return [

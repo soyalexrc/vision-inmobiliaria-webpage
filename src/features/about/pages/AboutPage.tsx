@@ -21,7 +21,6 @@ import {
 } from "@mui/material";
 import {useLocation} from "react-router-dom";
 import CommentsCarousel from "@/shared/components/carousel/CommentsCarousel";
-import CarouselCenterMode from "../../../shared/components/carousel/CarouselCenterMode";
 import {LIFESTYLE_BANNER_DATA} from "@/shared/utils/mock/LifestyleBanner";
 
 const mainData = [
@@ -151,7 +150,7 @@ export default function AboutPage() {
               medida.
             </Typography>
             <Box display='flex' justifyContent='center' mt={5}>
-              <Button variant='contained'>Contactanos</Button>
+              <Button variant='contained'>Contáctanos</Button>
             </Box>
           </Box>
         </Box>

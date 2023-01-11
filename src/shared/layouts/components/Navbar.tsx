@@ -1,20 +1,19 @@
 import React from 'react';
-import {Box, IconButton, Toolbar, Menu, MenuItem} from "@mui/material";
+import {Box, IconButton, Toolbar, Menu} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import {styled} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import {APP_BAR_DESKTOP, APP_BAR_MOBILE} from '@/shared/constants'
-import {NAVBAR_ITEMS} from '@/shared/utils/mock/menuItems'
 import useOffSetTop from "@/shared/hooks/useOffsetTop";
-import Logo from '@/assets/icons/induo-logo.png';
+import Logo from '@/assets/icons/vision-icon.png';
 import {Link, useLocation} from "react-router-dom";
 
-interface props {
+interface AppBarProps {
   theme?: any,
   open?: boolean
 }
 
-const AppBar = styled(MuiAppBar)(({theme}: props) => ({
+const AppBar = styled(MuiAppBar)(({theme}: AppBarProps) => ({
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -57,8 +56,8 @@ const MenuElement = styled(Link)(({theme}) => ({
   alignItems: 'center',
   borderBottom: '3px solid transparent',
   "&:hover": {
-    color: 'red',
-    borderBottomColor: 'red'
+    color: '#610321',
+    borderBottomColor: '#610321'
   }
 }))
 
@@ -72,7 +71,7 @@ const ChildElement = styled(Link)(({theme}) => ({
   display: 'block',
   "&:hover": {
     backgroundColor: '#f6f6f6',
-    color: 'red',
+    color: '#610321',
   }
 }))
 
@@ -147,7 +146,7 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
         >
           <Box display='flex' height='100%' alignItems='center' justifyContent='space-between' px={largeScreen ? 5 : 2}>
             <Link to='/'>
-              <Box component='img' sx={{cursor: 'pointer'}} src={Logo} width={100} alt=""/>
+              <Box component='img' sx={{cursor: 'pointer'}} src={Logo} width={60} alt=""/>
             </Link>
             {
               !largeScreen &&
@@ -167,8 +166,9 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                 <MenuElement
                   sx={{
                     ...(location.pathname === '/' && {
-                      color: 'red',
-                      borderBottomColor: 'red'
+                      color: '#610321',
+                      borderBottomColor: '#610321',
+                      fontWeight: 'bold'
                     })
                   }}
                   to='/'>
@@ -177,8 +177,10 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                 <MenuElement
                   sx={{
                     ...(location.pathname === '/venta' && {
-                      color: 'red',
-                      borderBottomColor: 'red'
+                      color: '#610321',
+                      borderBottomColor: '#610321',
+                      fontWeight: 'bold'
+
                     })
                   }}
                   to='/venta'>
@@ -189,8 +191,10 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   id='rent-actioner'
                   sx={{
                     ...(location.pathname === '/alquiler' && {
-                      color: 'red',
-                      borderBottomColor: 'red'
+                      color: '#610321',
+                      borderBottomColor: '#610321',
+                      fontWeight: 'bold'
+
                     })
                   }}
                   aria-owns={rentEl ? 'rent-id' : undefined}
@@ -205,23 +209,27 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   anchorEl={rentEl}
                   open={Boolean(rentEl)}
                   onClose={handleCloseRent}
-                  MenuListProps={{ onMouseLeave: handleCloseRent }}
+                  MenuListProps={{onMouseLeave: handleCloseRent}}
                 >
-                  <ChildElement onClick={handleCloseRent} to='/alquiler#estadias-vacacionales' >Estadias vacacionales</ChildElement>
-                  <ChildElement onClick={handleCloseRent} to='/alquiler#temporadas-largas' >Temporadas largas</ChildElement>
+                  <ChildElement onClick={handleCloseRent} to='/alquiler#estadias-vacacionales'>Estadias
+                    vacacionales</ChildElement>
+                  <ChildElement onClick={handleCloseRent} to='/alquiler#temporadas-largas'>Temporadas
+                    largas</ChildElement>
                 </Menu>
                 <MenuElement
                   id='services-actioner'
                   sx={{
                     ...(location.pathname === '/servicios' && {
-                      color: 'red',
-                      borderBottomColor: 'red'
+                      color: '#610321',
+                      borderBottomColor: '#610321',
+                      fontWeight: 'bold'
+
                     })
                   }}
                   aria-owns={servicesEl ? 'services-id' : undefined}
                   aria-haspopup="true"
                   onMouseOver={handleClickServices}
-                  to={'#'}                          >
+                  to={'#'}>
                   <p>Servicios</p>
                 </MenuElement>
                 <Menu
@@ -229,29 +237,35 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   anchorEl={servicesEl}
                   open={Boolean(servicesEl)}
                   onClose={handleCloseServices}
-                  MenuListProps={{ onMouseLeave: handleCloseServices }}
+                  MenuListProps={{onMouseLeave: handleCloseServices}}
                 >
-                  <ChildElement onClick={handleCloseServices} to='/servicios#inmobiliario' >Inmobiliario</ChildElement>
-                  <ChildElement onClick={handleCloseServices} to='/servicios#administracion-de-inmuebles-alquilados' >Administración de inmuebles alquilados</ChildElement>
-                  <ChildElement onClick={handleCloseServices} to='/servicios#tramites-legales' >Trámites legales</ChildElement>
-                  <ChildElement onClick={handleCloseServices} to='/servicios#gestion-contable' >Gestión contable</ChildElement>
-                  <ChildElement onClick={handleCloseServices} to='/servicios#ama-de-llaves' >Ama de llaves</ChildElement>
-                  <ChildElement onClick={handleCloseServices} to='/servicios#remodelacion' >Remodelación</ChildElement>
-                  <ChildElement onClick={handleCloseServices} to='/servicios#mantenimiento-de-inmuebles' >Mantenimiento de inmuebles</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#inmobiliario'>Inmobiliario</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#administracion-de-inmuebles-alquilados'>Administración
+                    de inmuebles alquilados</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#tramites-legales'>Trámites
+                    legales</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#gestion-contable'>Gestión
+                    contable</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#ama-de-llaves'>Ama de llaves</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#remodelacion'>Remodelación</ChildElement>
+                  <ChildElement onClick={handleCloseServices} to='/servicios#mantenimiento-de-inmuebles'>Mantenimiento
+                    de inmuebles</ChildElement>
                 </Menu>
 
                 <MenuElement
                   id='aboutUs-actioner'
                   sx={{
                     ...(location.pathname === '/acerca-de-nosotros' && {
-                      color: 'red',
-                      borderBottomColor: 'red'
+                      color: '#610321',
+                      borderBottomColor: '#610321',
+                      fontWeight: 'bold'
+
                     })
                   }}
                   aria-owns={aboutUsEl ? 'aboutUs-id' : undefined}
                   aria-haspopup="true"
                   onMouseOver={handleClickAboutUs}
-                  to={'#'}                          >
+                  to={'#'}>
                   <p>Acerca de Vision</p>
                 </MenuElement>
                 <Menu
@@ -259,24 +273,27 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   anchorEl={aboutUsEl}
                   open={Boolean(aboutUsEl)}
                   onClose={handleCloseAboutUs}
-                  MenuListProps={{ onMouseLeave: handleCloseAboutUs }}
+                  MenuListProps={{onMouseLeave: handleCloseAboutUs}}
                 >
-                  <ChildElement onClick={handleCloseAboutUs} to='/acerca-de-nosotros' >Acerca de nosotros</ChildElement>
-                  <ChildElement onClick={handleCloseAboutUs} to='/acerca-de-nosotros#equipo-de-trabajo' >Equipo de trabajo</ChildElement>
+                  <ChildElement onClick={handleCloseAboutUs} to='/acerca-de-nosotros'>Acerca de nosotros</ChildElement>
+                  <ChildElement onClick={handleCloseAboutUs} to='/acerca-de-nosotros#equipo-de-trabajo'>Equipo de
+                    trabajo</ChildElement>
                 </Menu>
 
                 <MenuElement
                   id='contact-actioner'
                   sx={{
                     ...(location.pathname === '/contacto' && {
-                      color: 'red',
-                      borderBottomColor: 'red'
+                      color: '#610321',
+                      borderBottomColor: '#610321',
+                      fontWeight: 'bold'
+
                     })
                   }}
                   aria-owns={contactEl ? 'contact-id' : undefined}
                   aria-haspopup="true"
                   onMouseOver={handleClickContact}
-                  to={'#'}                          >
+                  to={'#'}>
                   <p>Contacto</p>
                 </MenuElement>
                 <Menu
@@ -284,10 +301,11 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                   anchorEl={contactEl}
                   open={Boolean(contactEl)}
                   onClose={handleCloseContact}
-                  MenuListProps={{ onMouseLeave: handleCloseContact }}
+                  MenuListProps={{onMouseLeave: handleCloseContact}}
                 >
-                  <ChildElement onClick={handleCloseContact} to='/contacto' >Contacto</ChildElement>
-                  <ChildElement onClick={handleCloseContact} to='/contacto/trabaja-con-nosotros' >Envia tu curriculum</ChildElement>
+                  <ChildElement onClick={handleCloseContact} to='/contacto'>Contacto</ChildElement>
+                  <ChildElement onClick={handleCloseContact} to='/contacto/trabaja-con-nosotros'>Envia tu
+                    curriculum</ChildElement>
                 </Menu>
               </Box>
             }

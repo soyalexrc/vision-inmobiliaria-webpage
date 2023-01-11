@@ -1,8 +1,21 @@
 import React from 'react';
 import {DRAWER_WIDTH} from "@/shared/constants";
-import {Box, Button, Divider, Drawer, IconButton} from "@mui/material";
+import {
+  Box,
+  ListItemButton,
+  Divider,
+  Drawer,
+  IconButton,
+  Typography,
+  List,
+  ListItem,
+  ListItemText
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import {styled} from "@mui/material/styles";
+import Logo from '@/assets/icons/vision-icon.png'
+import {NAVBAR_ITEMS} from "@/shared/utils/mock/menuItems";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const DrawerHeader = styled('div')(({theme}) => ({
   display: 'flex',
@@ -18,6 +31,14 @@ interface MainDrawerProps {
 }
 
 export default function MainDrawer({open, handleDrawerChange}: MainDrawerProps) {
+  const location = useLocation()
+  const navigate = useNavigate();
+
+  const goTo = (url) => {
+    navigate(url)
+    handleDrawerChange(false)
+  }
+
   return (
     <Drawer
       variant="temporary"
@@ -34,21 +55,36 @@ export default function MainDrawer({open, handleDrawerChange}: MainDrawerProps) 
       }}>
       <DrawerHeader
         sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1.5rem 2rem'}}>
-        <Box>
-          logo here
-        </Box>
+        <Box component='img' onClick={() => goTo('/')} src={Logo} width={60}/>
+        <Typography variant='h4'>Bienvenido/a</Typography>
         <IconButton onClick={handleDrawerChange}>
           <CloseIcon/>
         </IconButton>
       </DrawerHeader>
       <Divider/>
-      <Box display='flex' flexDirection='column' justifyContent='space-between'>
-        {/*<MenuItems fn={() => setOpen(false)}/>*/}
-        <Box my={5} display='flex'>
-          <Button variant='text' onClick={() => {
-          }} color='secondary'>Cerrar sesión</Button>
-        </Box>
-      </Box>
+      <List>
+        {NAVBAR_ITEMS.map(element => (
+          <ListItem
+            disablePadding
+            key={element.value}
+            sx={{
+              ...(location.pathname === element.path && {
+                backgroundColor: 'primary.lighter',
+              })
+            }}>
+            <ListItemButton sx={{ p: 2 }} onClick={() => goTo(element.path)}>
+              <ListItemText
+                primary={element.label}
+                sx={{
+                  ...(location.pathname === element.path && {
+                    color: 'primary.main',
+                  })
+                }}
+                primaryTypographyProps={{fontWeight: location.pathname === element.path && 'bold'}}/>
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </Drawer>
   )
 }

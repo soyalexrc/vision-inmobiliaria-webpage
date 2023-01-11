@@ -5,7 +5,7 @@ import {LATEST_ELEMENTS_DATA} from "@/shared/utils/mock/latestElements";
 export default function LatestElements() {
   return (
     <Box sx={{ py: 5 , backgroundColor: '#ffff' }}>
-      <Typography align='center' sx={{ mb: 5 }} variant='h2'>Ultimas novedades</Typography>
+      <Typography align='center' sx={{ mb: 5 }} variant='h2'>Conoce los inmuebles que tenemos para ti</Typography>
       <Container>
         <Grid container spacing={5}>
           {
