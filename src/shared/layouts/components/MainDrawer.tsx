@@ -36,7 +36,7 @@ export default function MainDrawer({open, handleDrawerChange}: MainDrawerProps) 
 
   const goTo = (url) => {
     navigate(url)
-    handleDrawerChange(false)
+    handleDrawerChange()
   }
 
   return (
