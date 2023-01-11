@@ -34,7 +34,7 @@ export default function MainDrawer({open, handleDrawerChange}: MainDrawerProps) 
   const location = useLocation()
   const navigate = useNavigate();
 
-  const goTo = (url) => {
+  const goTo = (url: string) => {
     navigate(url)
     handleDrawerChange()
   }
@@ -80,7 +80,7 @@ export default function MainDrawer({open, handleDrawerChange}: MainDrawerProps) 
                     color: 'primary.main',
                   })
                 }}
-                primaryTypographyProps={{fontWeight: location.pathname === element.path && 'bold'}}/>
+                primaryTypographyProps={{fontWeight: location.pathname === element.path ? 'bold' : 'regular'}}/>
             </ListItemButton>
           </ListItem>
         ))}
