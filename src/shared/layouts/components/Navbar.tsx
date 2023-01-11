@@ -20,7 +20,7 @@ const AppBar = styled(MuiAppBar)(({theme}: AppBarProps) => ({
   }),
 }));
 
-const ToolbarShadowStyle = styled("div")(({theme}: props) => ({
+const ToolbarShadowStyle = styled("div")(({theme}: AppBarProps) => ({
   left: 0,
   right: 0,
   bottom: 0,
