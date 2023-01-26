@@ -294,7 +294,7 @@ export default function SellListPage() {
   }
 
   return (
-    <Page title='Contacto | Vision Inmobiliaria' description='Seccion de contacto'>
+    <Page title='Venta de inmuebles | Vision Inmobiliaria' description='Seccion de contacto'>
       <>
         <BannerComponent item={mainData[0]}/>
         <Container>
@@ -348,14 +348,14 @@ export default function SellListPage() {
               <CustomField
                 options={[
                   {label: ''},
-                  {label: 'Casa'},
-                  {label: 'Townhouse'},
-                  {label: 'Apartamento'},
-                  {label: 'Local'},
-                  {label: 'Oficina'},
-                  {label: 'Galpón'},
-                  {label: 'Terreno'},
-                  {label: 'Finca'},
+                  {label: 'Casas'},
+                  {label: 'Townhouses'},
+                  {label: 'Apartamentos'},
+                  {label: 'Locales'},
+                  {label: 'Oficinas'},
+                  {label: 'Galpónes'},
+                  {label: 'Terrenos'},
+                  {label: 'Fincas'},
                 ]}
                 sx={{mb: 2}}
                 title='Inmueble'

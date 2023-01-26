@@ -34,7 +34,7 @@ const mainData = [
 
 export default function HomePage() {
   return (
-    <Page title='HomePage' description='Some Descripciionb'>
+    <Page title='Vision Inmobiliaria' description='Some Descripciionb'>
       <div>
         <CarouselBasic3 items={mainData} type='banner' showArrows={false} showDots={false} />
         <Searcher />

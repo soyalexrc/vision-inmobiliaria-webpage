@@ -163,12 +163,6 @@ export default function AboutPage() {
             ))}
           </Grid>
         </Container>
-        <Container sx={{ my: 4 }}>
-          <Typography variant='h2' align='center' sx={{ my: 2 }}>Lo que nuestros clientes dicen de nosotros</Typography>
-          <CommentsCarousel
-            data={LIFESTYLE_BANNER_DATA}
-          />
-        </Container>
       </>
     </Page>
   )

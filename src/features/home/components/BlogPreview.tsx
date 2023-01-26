@@ -6,8 +6,8 @@ import {Link} from "react-router-dom";
 export default function BlogPreview() {
   return (
     <Box sx={{py: 5, backgroundColor: '#f4f4f4'}}>
-      <Typography align='center' variant='h2'>Te mantenemos informado</Typography>
-      <Typography align='center' variant='h5'>Las últimas noticias del mundo inmobiliario</Typography>
+      <Typography align='center' variant='h2'>Nuestros asesores</Typography>
+      <Typography align='center' variant='h5'>Siempre a tu disposición</Typography>
 
       <Container sx={{mt: 5}}>
         <Grid container spacing={2}>
@@ -18,8 +18,8 @@ export default function BlogPreview() {
                   textDecoration: 'none'
                 }}
                 component={Link}
-                to={`/blog/${element.path}`}
-                key={element.title}
+                to={`/blog/ `}
+                key={element.id}
                 item
                 xs={12}
                 md={4}>
@@ -31,8 +31,8 @@ export default function BlogPreview() {
                     }
                   }
                 }}>
-                  <Box component='img' height='250px' sx={{objectFit: 'cover'}} src={element.img}/>
-                  <Typography variant='h6' sx={{mt: 3}}>{element.title}</Typography>
+                  <Box component='img' height='400px' sx={{objectFit: 'cover'}} src={element.img}/>
+                  {/*<Typography variant='h6' sx={{mt: 3}}>{element.title}</Typography>*/}
                 </Box>
               </Grid>
             ))

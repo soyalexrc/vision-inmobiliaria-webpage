@@ -87,7 +87,7 @@ export default function ServicesPage() {
   }, [location])
 
   return (
-    <Page title='Contacto | Vision Inmobiliaria' description='Seccion de contacto'>
+    <Page title='Nuestros Servicios | Vision Inmobiliaria' description='Seccion de contacto'>
       <>
         <BannerComponent item={mainData[0]}/>
         <Container>

@@ -118,14 +118,14 @@ export default function Searcher() {
             <CustomField
               options={ [
                 {label: ''},
-                {label: 'Casa'},
-                {label: 'Townhouse'},
-                {label: 'Apartamento'},
-                {label: 'Local'},
-                {label: 'Oficina'},
-                {label: 'Galpón'},
-                {label: 'Terreno'},
-                {label: 'Finca'},
+                {label: 'Casas'},
+                {label: 'Townhouses'},
+                {label: 'Apartamentos'},
+                {label: 'Locales'},
+                {label: 'Oficinas'},
+                {label: 'Galpónes'},
+                {label: 'Terrenos'},
+                {label: 'Fincas'},
               ]}
               title='Inmueble'
               value={filters.typeOfAsset}

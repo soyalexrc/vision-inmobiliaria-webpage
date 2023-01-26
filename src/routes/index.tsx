@@ -53,8 +53,14 @@ export default function Router() {
         // {path: 'obra-nueva', element: <NewConstructionPage/>},
         // {path: 'registra-tu-vivienda', element: <RegisterHousingPage/>},
         {path: 'acerca-de-nosotros', element: <AboutPage/>},
+        {path: 'acerca-de-nosotros/comentarios', element: <CommentsPage/>},
         {path: 'contacto', element: <ContactPage/>},
+
         {path: 'contacto/trabaja-con-nosotros', element: <WorkWithUsPage/>},
+      //  Legal
+        {path: 'aviso-legal', element: <LegalWarningPage/>},
+        {path: 'proteccion-de-datos', element: <DataProtectionPage/>},
+        {path: 'cookies', element: <CookiesPage/>},
       ]
     },
   ])
@@ -71,6 +77,9 @@ const ServicesPage = Loadable(lazy(() => import('../features/services/pages/Serv
 // const NewConstructionPage = Loadable(lazy(() => import('../features/newConstruction/pages')));
 // const RegisterHousingPage = Loadable(lazy(() => import('../features/registerHousing/pages')));
 const AboutPage = Loadable(lazy(() => import('../features/about/pages/AboutPage')));
+const LegalWarningPage = Loadable(lazy(() => import('../features/legal/pages/LegalWarningPage')));
+const DataProtectionPage = Loadable(lazy(() => import('../features/legal/pages/DataProtectionPage')));
+const CookiesPage = Loadable(lazy(() => import('../features/legal/pages/CookiesPage')));
+const CommentsPage = Loadable(lazy(() => import('../features/about/pages/CommentsPage')));
 const ContactPage = Loadable(lazy(() => import('../features/contact/pages')));
 const WorkWithUsPage = Loadable(lazy(() => import('../features/contact/pages/WorkWithUsPage')));
-

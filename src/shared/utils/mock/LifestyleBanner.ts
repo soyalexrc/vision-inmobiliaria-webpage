@@ -7,12 +7,12 @@ export const LIFESTYLE_BANNER_DATA = [
   {
     img: banner1,
     path: '/venta',
-    label: 'Vivienda'
+    label: 'Viviendas'
   },
   {
     img: banner2,
     path: '/venta',
-    label: 'Local'
+    label: 'Locales'
   },
   {
     img: banner3,
@@ -22,17 +22,17 @@ export const LIFESTYLE_BANNER_DATA = [
   {
     img: banner4,
     path: '/venta',
-    label: 'Oficina'
+    label: 'Oficinas'
   },
   {
     img: banner1,
     path: '/venta',
-    label: 'Galpón'
+    label: 'Galpónes'
   },
   {
     img: banner2,
     path: '/venta',
-    label: 'Finca'
+    label: 'Fincas'
   },
   {
     img: banner4,

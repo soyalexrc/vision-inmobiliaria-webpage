@@ -79,7 +79,7 @@ function CarouselItem({item}: any) {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{position: 'relative', mx: 1}} >
+    <Box sx={{position: 'relative', mx: 1, cursor: 'grab'}} >
       <Box component='img' height='300px' sx={{objectFit: 'cover'}} src={item.img}/>
       <Box sx={{p: 1, position: 'absolute', bottom: 0, left: 0, right: 0, backgroundColor: '#08222094'}}>
         <Typography align='center' color='#ffff' variant='h5'>{item.label}</Typography>
