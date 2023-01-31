@@ -5,7 +5,7 @@ import {styled} from "@mui/material/styles";
 import MuiAppBar from "@mui/material/AppBar";
 import {APP_BAR_DESKTOP, APP_BAR_MOBILE} from '@/shared/constants'
 import useOffSetTop from "@/shared/hooks/useOffsetTop";
-import Logo from '@/assets/icons/vision-icon.png';
+import Logo from '@/assets/icons/vision-logo.png';
 import {Link as RouterLink, useLocation} from "react-router-dom";
 import {SOCIAL_MEDIA_DATA} from "@/shared/utils/mock/socialMedia";
 import TikTokIcon from "@/shared/components/TikTokIcon";
@@ -163,9 +163,9 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
             }),
           }}
         >
-          <Box display='flex' height='100%' alignItems='center' justifyContent='space-between' px={largeScreen ? 5 : 2}>
+          <Box display='flex' height='100%' alignItems='center' justifyContent='space-between' pr={largeScreen ? 5 : 2}>
             <RouterLink to='/'>
-              <Box component='img' sx={{cursor: 'pointer'}} src={Logo} width={60} alt=""/>
+              <Box component='img' sx={{cursor: 'pointer', objectFit: 'cover'}} src={Logo} width={160} height={100} alt=""/>
             </RouterLink>
             {
               !largeScreen &&
@@ -206,7 +206,6 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                       color: '#610321',
                       borderBottomColor: '#610321',
                       fontWeight: 'bold'
-
                     })
                   }}
                   to='/venta'>
@@ -421,8 +420,8 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                 <MenuElement
                   ref={contactRef}
                   onMouseEnter={() => validateCurrentMenu('contact')}
-                  onClick={() => handleSetMenu('contact', () => setOpenAbout(true)) }
-                  id='services-id'
+                  onClick={() => handleSetMenu('contact', () => setOpenContact(true)) }
+                  id='contact-id'
                   sx={{
                     ...(location.pathname.includes('/contacto') && {
                       color: '#610321',
@@ -431,13 +430,13 @@ export default function Navbar({open, largeScreen, handleDrawerChange}: NavparPr
                     })
                   }}
                   to='#'>
-                  <p>Acerca de Vision</p>
+                  <p>Contacto</p>
                 </MenuElement>
                 <Box
                   sx={{
                     position: 'fixed',
                     top: getCoordinates(contactRef)?.y + 61,
-                    left: getCoordinates(contactRef)?.x,
+                    left: getCoordinates(contactRef)?.x - 61,
                     zIndex: 999,
                     backgroundColor: '#fff',
                     width: 250,

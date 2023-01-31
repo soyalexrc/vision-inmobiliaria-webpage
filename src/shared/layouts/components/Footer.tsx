@@ -48,7 +48,7 @@ export default function Footer() {
             <Typography variant='h6' fontWeight='bold' sx={{ ...(!largeScreen && {mt: 3} ) }}>Menu</Typography>
             {NAVBAR_ITEMS.map(element => (
               <Box key={element.path} my={2}>
-                <RouterLink to='#'>
+                <RouterLink to={element.path}>
                   {element.label}
                 </RouterLink>
               </Box>
@@ -56,11 +56,23 @@ export default function Footer() {
           </Grid>
           <Grid item xs={12} md={3}>
             <Typography variant='h6' fontWeight='bold' sx={{  mb: 2, ...(!largeScreen && {mt: 3} )}}>Contáctanos</Typography>
-            <Typography>
-              Av. Feo La Cruz, CC Paseo La Granja, Local Mezz-6, Nivel Mezzanina, Sector La Granja, Municipio Naguanagua, Estado Carabobo
-            </Typography>
-            <Typography fontWeight='bold' sx={{ mt: 2 }}>Tel: <Link href="tel:949228463" target='_blank'>949 22 84 63</Link></Typography>
-            <Typography fontWeight='bold' sx={{ mt: 2 }}> <Link href="mailto:ventas@visioninmobiliaria.com.ve" target='_blank'>ventas@visioninmobiliaria.com.ve</Link></Typography>
+            <Box display='flex' sx={{ padding: '2px' }} justifyContent='flex-end'>
+              <Link href="https://www.tiktok.com/@somosvisioninmobiliaria" target="_blank" style={{margin: '0 1rem'}}>
+                <TikTokIcon color='#610321' sx={{ width: 25, height: 25}}/>
+              </Link>
+              {
+                SOCIAL_MEDIA_DATA.map((element, index) => (
+                  <Link href={element.path} target="_blank" key={element.path + index} style={{margin: '0 1rem'}}>
+                    {element.icon}
+                  </Link>
+                ))
+              }
+            </Box>
+            {/*<Typography>*/}
+            {/*  Av. Feo La Cruz, CC Paseo La Granja, Local Mezz-6, Nivel Mezzanina, Sector La Granja, Municipio Naguanagua, Estado Carabobo*/}
+            {/*</Typography>*/}
+            {/*<Typography fontWeight='bold' sx={{ mt: 2 }}>Tel: <Link href="tel:949228463" target='_blank'>949 22 84 63</Link></Typography>*/}
+            {/*<Typography fontWeight='bold' sx={{ mt: 2 }}> <Link href="mailto:ventas@visioninmobiliaria.com.ve" target='_blank'>ventas@visioninmobiliaria.com.ve</Link></Typography>*/}
           </Grid>
         </Grid>
       </Container>

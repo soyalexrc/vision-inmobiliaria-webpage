@@ -14,7 +14,10 @@ export default function ContactBanner() {
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       minHeight: 400,
-      py: 5
+      py: 5,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     }}>
 
 
@@ -23,7 +26,7 @@ export default function ContactBanner() {
           Te asesoramos para conseguir el inmueble <br/>
           que estas buscando, de forma transparente y segura.
         </Typography>
-        <Button variant='contained' onClick={() => navigate('/contacto')} sx={{mt: 3}}>Contactanos</Button>
+        <Button variant='contained' onClick={() => navigate('/contacto')} sx={{mt: 3}}>Contáctanos </Button>
       </Box>
     </Box>
   )

@@ -103,13 +103,12 @@ export default function Searcher() {
             <CustomField
               options={ [
                 {label: ''},
-                {label: 'Compra'},
                 {label: 'Venta'},
                 {label: 'Alquiler'},
                 {label: 'Traspaso de fondo'},
                 {label: 'Estadias Vacacionales'},
               ]}
-              title='Operacion'
+              title='Operación'
               value={filters.operation}
               onChange={(_: any, newValue: any) => handleChange('operation', newValue)}
             />
@@ -183,7 +182,7 @@ export default function Searcher() {
               <TextField  value={filters.reference} onChange={(event) => handleChange('reference', event.target.value)} fullWidth size='small' label='Palabra clave / Codigo'  variant="outlined"/>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <Typography variant='h6' sx={{ mb: 2 }}>Mas Opciones</Typography>
+            <Typography variant='h6' sx={{ mb: 2 }}>más Opciones</Typography>
             <Autocomplete
               size='small'
               multiple
