@@ -12,6 +12,7 @@ export default function UserProtectedRoute({ children }: props) {
   // const { token } = useAuth();
   // console.log(token);
   // const location = useLocation();
+  //
 
   if ( !localStorage.getItem('al-token')) {
     return <Navigate to="/auth" replace state={{ from: location }} />;
