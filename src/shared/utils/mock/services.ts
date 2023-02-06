@@ -22,7 +22,7 @@ export const SERVICES_DATA = [
   },
   {
     img: services4,
-    title: 'Ama de llaves',
+    title: 'Ama de llaves (Limpieza)',
   },
   {
     img: services4,

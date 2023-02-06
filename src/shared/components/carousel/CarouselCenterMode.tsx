@@ -58,6 +58,7 @@ function CustomArrow({onClick, side}: any) {
       sx={{
         cursor: 'pointer',
         position: 'absolute',
+        backgroundColor: 'primary.main',
         top: '50%',
         ...(side === 'left' && {
           left: 0
@@ -69,8 +70,8 @@ function CustomArrow({onClick, side}: any) {
       }}
       onClick={onClick}
     >
-      {side === 'left' && <ArrowBackIosIcon sx={{color: '#000000'}}/>}
-      {side === 'right' && <ArrowForwardIosIcon sx={{color: '#000000'}}/>}
+      {side === 'left' && <ArrowBackIosIcon sx={{color: '#fff'}}/>}
+      {side === 'right' && <ArrowForwardIosIcon sx={{color: '#fff'}}/>}
     </IconButton>
   )
 }
@@ -96,11 +97,13 @@ export default function CarouselCenterMode({data}: any) {
   const settings = {
     dots: true,
     slidesToShow: 4,
+    slidesToScroll: 1,
     infinite: true,
     autoplay: true,
     autoplaySpeed: 5000,
-    // nextArrow: <CustomArrow onClick={() => handlePrevious()} side='left'/>,
-    // prevArrow: <CustomArrow onClick={() => handleNext()} side='right'/>,
+    arrows: true,
+    nextArrow: <CustomArrow onClick={() => console.log('side')} side='right'/>,
+    prevArrow: <CustomArrow onClick={() => console.log('side')} side='left'/>,
     responsive: [
       {
         breakpoint: 1024,

@@ -21,6 +21,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LifestyleBanner from "@/shared/components/LifestyleBanner";
 import ContactBanner from "@/shared/components/ContactBanner";
 import map from '@/assets/images/map.png'
+import FiltersDrawer from "@/shared/components/FiltersDrawer";
 
 const mainData = [
   {
@@ -53,15 +54,6 @@ const housingType = [
   {label: 'Garajes'},
   {label: 'Naves industriales'},
   {label: 'Parcelas'},
-]
-
-const province = [
-  {label: 'Guadalajara'},
-  {label: 'Madrid'},
-]
-
-const poblation = [
-  {label: ''}
 ]
 
 const numberOfRooms = [
@@ -235,6 +227,7 @@ export default function SellListPage() {
   const largeScreen = useMediaQuery((theme: any) => theme.breakpoints.up('md'))
   // TODO usar redux.
   const [viewType, setViewType] = React.useState('grid');
+  const [filtersDrawerOpen, setFiltersDrawerOpen] = React.useState(false);
 
 
   const [filters, setFilters] = React.useState({
@@ -254,7 +247,7 @@ export default function SellListPage() {
       [key]: value
     }))
 
-    if (key === 'operation' && value.label && value.label === 'Traspaso de fondo') {
+    if (key === 'operation' && value.label && value.label === 'Traspaso fondo de comercio') {
       setFilters(prevState => ({
         ...prevState,
         typeOfAsset: {label: 'Local'}
@@ -293,144 +286,160 @@ export default function SellListPage() {
     }
   }
 
+  React.useEffect(() => {
+    if (!largeScreen) setViewType('grid')
+  }, [largeScreen])
+
   return (
     <Page title='Venta de inmuebles | Vision Inmobiliaria' description='Seccion de contacto'>
       <>
         <BannerComponent item={mainData[0]}/>
         <Container>
-          <Grid container columnSpacing={5} rowSpacing={2} sx={{my: 3}}
-                direction={largeScreen ? 'row' : 'column-reverse'}>
-            <Grid item xs={12} md={4}>
-              <Button size='small'><ArrowLeftIcon/>Volver</Button>
-              <CustomField
-                options={[
-                  {label: ''},
-                  {label: 'Carabobo'},
-                  {label: 'Cojedes'},
-                  {label: 'Falcón'},
-                ]}
-                title='Estado'
-                value={filters.state}
-                sx={{mb: 2}}
-                onChange={(_: any, newValue: any) => handleChange('state', newValue)}
-              />
-              <CustomField
-                options={getZonesByState()}
-                title='Municipio'
-                sx={{mb: 2}}
-                value={filters.zone}
-                onChange={(_: any, newValue: any) => handleChange('zone', newValue)}
-              />
+          <Grid container columnSpacing={5} rowSpacing={2} sx={{my: 3}}>
+            {
+              largeScreen &&
+              <Grid item xs={12} md={4}>
+                <Button size='small'><ArrowLeftIcon/>Volver</Button>
+                <CustomField
+                  options={[
+                    {label: ''},
+                    {label: 'Carabobo'},
+                    {label: 'Cojedes'},
+                    {label: 'Falcón'},
+                  ]}
+                  title='Estado'
+                  value={filters.state}
+                  sx={{mb: 2}}
+                  onChange={(_: any, newValue: any) => handleChange('state', newValue)}
+                />
+                <CustomField
+                  options={getZonesByState()}
+                  title='Municipio'
+                  sx={{mb: 2}}
+                  value={filters.zone}
+                  onChange={(_: any, newValue: any) => handleChange('zone', newValue)}
+                />
 
-              <Box mb={3}>
-                <Typography variant='h6' sx={{mb: 1}}>Precio</Typography>
-                <Box display='flex' alignItems='center'>
-                  <TextField
+                <Box mb={3}>
+                  <Typography variant='h6' sx={{mb: 1}}>Precio</Typography>
+                  <Box display='flex' alignItems='center'>
+                    <TextField
+                      size='small'
+                      fullWidth
+                      label="Desde"
+                      variant="outlined"
+                      value={filters.priceFrom}
+                      onChange={(event) => handleChange('priceFrom', event.target.value)}
+                    />
+                    <Box mx={2}>-</Box>
+                    <TextField
+                      size='small'
+                      fullWidth
+                      label="Hasta"
+                      variant="outlined"
+                      value={filters.priceTo}
+                      onChange={(event) => handleChange('priceTo', event.target.value)}
+                    />
+                  </Box>
+                </Box>
+
+                <CustomField
+                  options={[
+                    {label: ''},
+                    {label: 'Casas'},
+                    {label: 'Townhouses'},
+                    {label: 'Apartamentos'},
+                    {label: 'Locales'},
+                    {label: 'Oficinas'},
+                    {label: 'Galpónes'},
+                    {label: 'Terrenos'},
+                    {label: 'Fincas'},
+                  ]}
+                  sx={{mb: 2}}
+                  title='Inmueble'
+                  value={filters.typeOfAsset}
+                  disabled={filters.operation?.label === 'Traspaso fondo de comercio'}
+                  onChange={(_: any, newValue: any) => handleChange('typeOfAsset', newValue)}
+                />
+                <CustomField
+                  title='Numero de dormitorios'
+                  options={numberOfRooms}
+                  sx={{mb: 3}}
+                />
+                <CustomField
+                  title='Numero de banos'
+                  options={numberOfBaths}
+                  sx={{mb: 3}}
+                />
+                <CustomField
+                  title='Numero de garajes'
+                  options={numberOfGarages}
+                  sx={{mb: 3}}
+                />
+
+                <Box mb={3}>
+                  <Typography variant='h6' sx={{mb: 1}}>Mas opciones</Typography>
+                  <Autocomplete
                     size='small'
-                    fullWidth
-                    label="Desde"
-                    variant="outlined"
-                    value={filters.priceFrom}
-                    onChange={(event) => handleChange('priceFrom', event.target.value)}
-                  />
-                  <Box mx={2}>-</Box>
-                  <TextField
-                    size='small'
-                    fullWidth
-                    label="Hasta"
-                    variant="outlined"
-                    value={filters.priceTo}
-                    onChange={(event) => handleChange('priceTo', event.target.value)}
+                    multiple
+                    options={sampleOptions}
+                    getOptionLabel={(option: any) => option.title}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        variant="outlined"
+                        placeholder="Seleccionar"
+                      />
+                    )}
                   />
                 </Box>
-              </Box>
 
-              <CustomField
-                options={[
-                  {label: ''},
-                  {label: 'Casas'},
-                  {label: 'Townhouses'},
-                  {label: 'Apartamentos'},
-                  {label: 'Locales'},
-                  {label: 'Oficinas'},
-                  {label: 'Galpónes'},
-                  {label: 'Terrenos'},
-                  {label: 'Fincas'},
-                ]}
-                sx={{mb: 2}}
-                title='Inmueble'
-                value={filters.typeOfAsset}
-                disabled={filters.operation?.label === 'Traspaso de fondo'}
-                onChange={(_: any, newValue: any) => handleChange('typeOfAsset', newValue)}
-              />
-              <CustomField
-                title='Numero de dormitorios'
-                options={numberOfRooms}
-                sx={{mb: 3}}
-              />
-              <CustomField
-                title='Numero de banos'
-                options={numberOfBaths}
-                sx={{mb: 3}}
-              />
-              <CustomField
-                title='Numero de garajes'
-                options={numberOfGarages}
-                sx={{mb: 3}}
-              />
+                <Box mb={3}>
+                  <Typography variant='h6' sx={{mb: 1}}>Buscar por Codigo</Typography>
+                  <TextField value={filters.reference} onChange={(event) => handleChange('reference', event.target.value)}
+                             fullWidth size='small' label='Palabra clave / Codigo' variant="outlined"/>
 
-              <Box mb={3}>
-                <Typography variant='h6' sx={{mb: 1}}>Mas opciones</Typography>
-                <Autocomplete
-                  size='small'
-                  multiple
-                  options={sampleOptions}
-                  getOptionLabel={(option: any) => option.title}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="outlined"
-                      placeholder="Seleccionar"
-                    />
-                  )}
-                />
-              </Box>
+                </Box>
 
-              <Box mb={3}>
-                <Typography variant='h6' sx={{mb: 1}}>Buscar por Codigo</Typography>
-                <TextField value={filters.reference} onChange={(event) => handleChange('reference', event.target.value)}
-                           fullWidth size='small' label='Palabra clave / Codigo' variant="outlined"/>
+                <Button size='small' fullWidth variant='contained'>Buscar</Button>
 
-              </Box>
-
-              <Button size='small' fullWidth variant='contained'>Buscar</Button>
-
-            </Grid>
+              </Grid>
+            }
             <Grid item container spacing={2} xs={12} md={8}>
               <Grid item xs={12}>
                 <Typography align={'center'} variant='h3'>14 Inmuebles en venta</Typography>
               </Grid>
-              <Grid item xs={6} sx={{display: 'flex', alignItems: 'center'}}>
+              <Grid item xs={largeScreen ? 6 : 12} sx={{display: 'flex', alignItems: 'center'}}>
                 <Box mr={2}>Ordenar por</Box>
                 <CustomField
                   options={housingType}
                   sx={{width: '200px'}}
                 />
+              </Grid>
 
-              </Grid>
-              <Grid item xs={6} sx={{display: 'flex', justifyContent: 'flex-end'}}>
-                <Box display='flex'>
-                  <IconButton onClick={() => setViewType('grid')}>
-                    <AppsIcon color={viewType === 'grid' ? 'primary' : 'action'}/>
-                  </IconButton>
-                  <IconButton onClick={() => setViewType('list')}>
-                    <FormatListBulletedIcon color={viewType === 'list' ? 'primary' : 'action'}/>
-                  </IconButton>
-                  <IconButton onClick={() => setViewType('map')}>
-                    <LocationOnIcon color={viewType === 'map' ? 'primary' : 'action'}/>
-                  </IconButton>
-                </Box>
-              </Grid>
+              {
+                !largeScreen &&
+                <Grid item xs={12}>
+                  <Button fullWidth size='small' variant='contained' onClick={() => setFiltersDrawerOpen(true)}>Filtros</Button>
+                </Grid>
+              }
+
+              {
+                largeScreen &&
+                <Grid item xs={6} sx={{display: 'flex', justifyContent: 'flex-end'}}>
+                  <Box display='flex'>
+                    <IconButton onClick={() => setViewType('grid')}>
+                      <AppsIcon color={viewType === 'grid' ? 'primary' : 'action'}/>
+                    </IconButton>
+                    <IconButton onClick={() => setViewType('list')}>
+                      <FormatListBulletedIcon color={viewType === 'list' ? 'primary' : 'action'}/>
+                    </IconButton>
+                    <IconButton onClick={() => setViewType('map')}>
+                      <LocationOnIcon color={viewType === 'map' ? 'primary' : 'action'}/>
+                    </IconButton>
+                  </Box>
+                </Grid>
+              }
               {
                 viewType !== 'map' &&
                 LATEST_ELEMENTS_DATA.map(element => (
@@ -446,7 +455,7 @@ export default function SellListPage() {
                 viewType === 'map' &&
                 <Box mt={6} component='img' src={map} height='750px' sx={{ objectFit: 'cover' }} />
               }
-              <Grid item xs={12} sx={{display: 'flex', justifyContent: 'flex-end'}}>
+              <Grid item xs={12} sx={{display: 'flex', justifyContent: largeScreen ? 'flex-end' : 'center'}}>
                 <Pagination sx={{my: 5}} count={10} variant="outlined" shape="rounded"/>
               </Grid>
             </Grid>
@@ -454,6 +463,7 @@ export default function SellListPage() {
         </Container>
         <LifestyleBanner/>
         <ContactBanner/>
+        <FiltersDrawer handleDrawerChange={() => setFiltersDrawerOpen(!filtersDrawerOpen)} open={filtersDrawerOpen} />
       </>
     </Page>
   )

@@ -52,15 +52,6 @@ const housingType = [
   {label: 'Parcelas'},
 ]
 
-const province = [
-  {label: 'Guadalajara'},
-  {label: 'Madrid'},
-]
-
-const poblation = [
-  {label: ''}
-]
-
 const numberOfRooms = [
   {label: 'De 1 a 2'},
   {label: 'De 3 a 5'},
@@ -248,7 +239,7 @@ export default function RentListPage() {
       [key]: value
     }))
 
-    if (key === 'operation' && value.label && value.label === 'Traspaso de fondo') {
+    if (key === 'operation' && value.label && value.label === 'Traspaso fondo de comercio') {
       setFilters(prevState => ({
         ...prevState,
         typeOfAsset: {label: 'Local'}
@@ -354,7 +345,7 @@ export default function RentListPage() {
                 sx={{mb: 2}}
                 title='Inmueble'
                 value={filters.typeOfAsset}
-                disabled={filters.operation?.label === 'Traspaso de fondo'}
+                disabled={filters.operation?.label === 'Traspaso fondo de comercio'}
                 onChange={(_: any, newValue: any) => handleChange('typeOfAsset', newValue)}
               />
               <CustomField

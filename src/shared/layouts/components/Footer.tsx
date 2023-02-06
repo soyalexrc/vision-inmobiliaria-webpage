@@ -45,7 +45,7 @@ export default function Footer() {
 
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography variant='h6' fontWeight='bold' sx={{ ...(!largeScreen && {mt: 3} ) }}>Menu</Typography>
+            <Typography variant='h6' fontWeight='bold' sx={{...(!largeScreen && {mt: 3})}}>Menu</Typography>
             {NAVBAR_ITEMS.map(element => (
               <Box key={element.path} my={2}>
                 <RouterLink to={element.path}>
@@ -55,19 +55,24 @@ export default function Footer() {
             ))}
           </Grid>
           <Grid item xs={12} md={3}>
-            <Typography variant='h6' fontWeight='bold' sx={{  mb: 2, ...(!largeScreen && {mt: 3} )}}>Contáctanos</Typography>
-            <Box display='flex' sx={{ padding: '2px' }} justifyContent='flex-end'>
-              <Link href="https://www.tiktok.com/@somosvisioninmobiliaria" target="_blank" style={{margin: '0 1rem'}}>
-                <TikTokIcon color='#610321' sx={{ width: 25, height: 25}}/>
-              </Link>
+            <Typography variant='h6' fontWeight='bold'
+                        sx={{mb: 2, ...(!largeScreen && {mt: 3})}}>Contáctanos</Typography>
+            <Grid container rowSpacing={2}>
+              <Grid item xs={4} sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Link href="https://www.tiktok.com/@somosvisioninmobiliaria" target="_blank">
+                  <TikTokIcon color='#610321' sx={{width: 25, height: 25}}/>
+                </Link>
+              </Grid>
               {
                 SOCIAL_MEDIA_DATA.map((element, index) => (
-                  <Link href={element.path} target="_blank" key={element.path + index} style={{margin: '0 1rem'}}>
-                    {element.icon}
-                  </Link>
+                  <Grid item xs={4} key={element.path + index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Link href={element.path} target="_blank">
+                      {element.icon}
+                    </Link>
+                  </Grid>
                 ))
               }
-            </Box>
+            </Grid>
             {/*<Typography>*/}
             {/*  Av. Feo La Cruz, CC Paseo La Granja, Local Mezz-6, Nivel Mezzanina, Sector La Granja, Municipio Naguanagua, Estado Carabobo*/}
             {/*</Typography>*/}
@@ -80,12 +85,12 @@ export default function Footer() {
         <Container>
           <Box display='flex' alignItems='center' p={1}>
             <Typography component={RouterLink} to='aviso-legal'> Aviso Legal</Typography>
-            <Divider  sx={{ mx: 2, borderWidth: '1px' }} orientation='vertical' flexItem />
-            <Typography component={RouterLink} to='proteccion-de-datos'>Protección  de datos</Typography>
-            <Divider sx={{ mx: 2, borderWidth: '1px' }}  orientation='vertical' flexItem />
+            <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
+            <Typography component={RouterLink} to='proteccion-de-datos'>Protección de datos</Typography>
+            <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
             <Typography component={RouterLink} to='cookies'>Cookies</Typography>
-            <Divider sx={{ mx: 2, borderWidth: '1px' }}  orientation='vertical' flexItem />
-            <Typography component={Link} href='https://google.com' target='_blank' >Creado por LSM Sinergy</Typography>
+            <Divider sx={{mx: 2, borderWidth: '1px'}} orientation='vertical' flexItem/>
+            <Typography component={Link} href='https://google.com' target='_blank'>Creado por LSM Sinergy</Typography>
           </Box>
         </Container>
       </Box>

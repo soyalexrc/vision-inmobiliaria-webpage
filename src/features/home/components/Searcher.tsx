@@ -53,7 +53,7 @@ export default function Searcher() {
       [key]: value
     }))
 
-    if (key === 'operation' && value.label && value.label === 'Traspaso de fondo') {
+    if (key === 'operation' && value.label && value.label === 'Traspaso fondo de comercio') {
       setFilters(prevState => ({
         ...prevState,
         typeOfAsset: {label: 'Local'}
@@ -105,7 +105,7 @@ export default function Searcher() {
                 {label: ''},
                 {label: 'Venta'},
                 {label: 'Alquiler'},
-                {label: 'Traspaso de fondo'},
+                {label: 'Traspaso fondo de comercio'},
                 {label: 'Estadias Vacacionales'},
               ]}
               title='Operación'
@@ -128,7 +128,7 @@ export default function Searcher() {
               ]}
               title='Inmueble'
               value={filters.typeOfAsset}
-              disabled={filters.operation?.label === 'Traspaso de fondo'}
+              disabled={filters.operation?.label === 'Traspaso fondo de comercio'}
               onChange={(_: any, newValue: any) => handleChange('typeOfAsset', newValue)}
             />
           </Grid>
@@ -182,7 +182,7 @@ export default function Searcher() {
               <TextField  value={filters.reference} onChange={(event) => handleChange('reference', event.target.value)} fullWidth size='small' label='Palabra clave / Codigo'  variant="outlined"/>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
-            <Typography variant='h6' sx={{ mb: 2 }}>más Opciones</Typography>
+            <Typography variant='h6' sx={{ mb: 2 }}>Más Opciones</Typography>
             <Autocomplete
               size='small'
               multiple

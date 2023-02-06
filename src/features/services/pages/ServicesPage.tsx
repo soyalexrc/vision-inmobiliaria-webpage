@@ -159,7 +159,7 @@ export default function ServicesPage() {
                   {label: 'Administración de inmuebles alquilados', id: 'administracion-de-inmuebles-alquilados'},
                   {label: 'Trámites legales', id: 'tramites-legales'},
                   {label: 'Gestión contable', id: 'gestion-contable'},
-                  {label: 'Ama de llaves', id: 'ama-de-llaves'},
+                  {label: 'Ama de llaves (limpieza)', id: 'ama-de-llaves'},
                   {label: 'Remodelación', id: 'remodelacion'},
                   {label: 'Mantenimiento de inmuebles', id: 'mantenimiento-de-inmuebles'},
                 ].map((element, index) => (

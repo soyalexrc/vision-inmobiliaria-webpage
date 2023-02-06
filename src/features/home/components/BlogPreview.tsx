@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 export default function BlogPreview() {
   return (
     <Box sx={{py: 5, backgroundColor: '#f4f4f4'}}>
-      <Typography align='center' variant='h2'>Nuestros asesores</Typography>
+      <Typography align='center' variant='h2'>Nuestros Asesores Integrales</Typography>
       <Typography align='center' variant='h5'>Siempre a tu disposición</Typography>
 
       <Container sx={{mt: 5}}>
