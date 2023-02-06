@@ -11,7 +11,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import {styled} from "@mui/material/styles";
 
-const DrawerHeader = styled('div')(({_}) => ({
+const DrawerHeader = styled('div')(({_}: any) => ({
   display: 'flex',
   alignItems: 'center',
   // necessary for content to be below app bar
